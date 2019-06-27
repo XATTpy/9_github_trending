@@ -33,4 +33,10 @@ if __name__ == "__main__":
     top_size = 20
     last_weak = get_last_weak_date()
     trending_repositories = get_trending_repositories(top_size, last_weak)
-    print(trending_repositories)
+    print("Interesting repositories and their issues amount:")
+
+    for repo in trending_repositories:
+        repo_owner, repo_name = repo["full_name"].split("/")
+        issues_amount = get_open_issues_amount(repo_owner, repo_name)
+        repo_url = repo["html_url"]
+        show(repo_url, issues_amount)
