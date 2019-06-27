@@ -13,8 +13,9 @@ def get_last_weak_date():
 
 
 def get_trending_repositories(top_size, last_weak):
-    query = "https://api.github.com/search/repositories?q=created:>={}&sort=stars"
-    trending_repositories = requests.get(query.format(last_weak)).json()["items"][:top_size]
+    payload = {"q": "created:>={}".format(last_weak), "sort": "stars"}
+    query = "https://api.github.com/search/repositories"
+    trending_repositories = requests.get(query, params=payload).json()["items"][:top_size]
     return trending_repositories
 
 
@@ -32,10 +33,4 @@ if __name__ == "__main__":
     top_size = 20
     last_weak = get_last_weak_date()
     trending_repositories = get_trending_repositories(top_size, last_weak)
-    print("Interesting repositories and their issues amount:")
-
-    for repo in trending_repositories:
-        repo_owner, repo_name = repo["full_name"].split("/")
-        issues_amount = get_open_issues_amount(repo_owner, repo_name)
-        repo_url = repo["html_url"]
-        show(repo_url, issues_amount)
+    print(trending_repositories)
