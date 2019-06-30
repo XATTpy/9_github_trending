@@ -3,12 +3,9 @@ from datetime import datetime, timedelta
 
 
 def get_last_weak_date():
-    now = datetime.datetime.now()
-    last_weak = now.replace(day=now.day-6)
-    if last_weak.month < 10:
-        last_weak = "{}-0{}-{}".format(last_weak.year, last_weak.month, last_weak.day)
-    else:
-        last_weak = "{}-{}-{}".format(last_weak.year, last_weak.month, last_weak.day)
+    now = datetime.now()
+    delta = timedelta(days=6)
+    last_weak = datetime.strftime(now-delta, "%Y-%m-%d")
     return last_weak
 
 
