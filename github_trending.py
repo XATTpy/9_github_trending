@@ -22,7 +22,7 @@ def get_open_issues_amount(repo_owner, repo_name):
     return issues_amount
 
 
-def show(repo_url, issues_amount):
+def show_repo_urls_and_issues_amount(repo_url, issues_amount):
     print(repo_url, "- {} issues".format(issues_amount))
 
 
@@ -36,4 +36,4 @@ if __name__ == "__main__":
         repo_owner, repo_name = repo["full_name"].split("/")
         issues_amount = get_open_issues_amount(repo_owner, repo_name)
         repo_url = repo["html_url"]
-        show(repo_url, issues_amount)
+        show_repo_urls_and_issues_amount(repo_url, issues_amount)
