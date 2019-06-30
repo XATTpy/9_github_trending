@@ -34,6 +34,6 @@ if __name__ == "__main__":
 
     for repo in trending_repositories:
         repo_owner, repo_name = repo["full_name"].split("/")
-        issues_amount = get_open_issues_amount(repo_owner, repo_name)
+        issues_amount = get_open_issues_amount(repo_owner, repo_name) # "get_open_issues_amount # не используется, а должна" (коммент удалю после проверки)
         repo_url = repo["html_url"]
         show_repo_urls_and_issues_amount(repo_url, issues_amount)
