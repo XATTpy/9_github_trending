@@ -10,9 +10,9 @@ def get_last_weak_date():
 
 
 def get_trending_repositories(top_size, last_weak):
-    payload = {"q": "created:>={}".format(last_weak), "sort": "stars"}
+    payload = {"q": "created:>={}".format(last_weak), "sort": "stars", "per_page": top_size}
     query = "https://api.github.com/search/repositories"
-    trending_repositories = requests.get(query, params=payload).json()["items"][:top_size]
+    trending_repositories = requests.get(query, params=payload).json()["items"]
     return trending_repositories
 
 
