@@ -1,5 +1,5 @@
 import requests
-import datetime
+from datetime import datetime, timedelta
 
 
 def get_last_weak_date():
